@@ -36,6 +36,23 @@ $(function () {
       }
     });
   }
+
+  $('.time-block').each(function() {
+    const key = $(this).attr('id');
+    const value = localStorage.getItem(key);
+    $(this).children('.description').val(value);
+  });
+
+  function updateTime() {
+    const dateElement = $('#date');
+    const timeElement = $('#time');
+    const currentDate = dayjs().format('dddd, MMM D, YYYY');
+    const currentTime = dayjs().format('hh:mm:ss A');
+    dateElement.text(currentDate);
+    timeElement.text(currentTime);
+  }
+
+  
 })
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
