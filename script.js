@@ -13,7 +13,15 @@ $(function () {
       $(this).toggleClass('present', blockHour === currentHour);
       $(this).toggleClass('future', blockHour > currentHour);
     }
-    )
+    );
+  }
+
+  function textEntry() {
+    $('.saveBtn').on('click', function() {
+      const key = $(this).parent().attr('id');
+      const value = $(this).siblings('.description').val();
+      localStorage.setItem(key, value);
+    });
   }
 })
   // TODO: Add a listener for click events on the save button. This code should
