@@ -6,6 +6,15 @@ dayjs.locale(localeSettings);
 
 $(function () {
   const currentHour = dayjs().format('H');
+  function hourlyColor() {
+    $('.time-block').each(function() {
+      const blockHour = parseInt(this.id);
+      $(this).toggleClass('past', blockHour < currentHour);
+      $(this).toggleClass('present', blockHour === currentHour);
+      $(this).toggleClass('future', blockHour > currentHour);
+    }
+    )
+  }
 })
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
