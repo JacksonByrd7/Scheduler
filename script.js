@@ -23,6 +23,19 @@ $(function () {
       localStorage.setItem(key, value);
     });
   }
+
+  function refreshColor() {
+    $('.time-block').each(function() {
+      const blockHour = parseInt(this.id);
+      if (blockHour == currentHour) {
+        $(this).removeClass('past future').addClass('present');
+      } else if (blockHour < currentHour) {
+        $(this).removeClass('future present').addClass('past');
+      } else if (blockHour > currentHour) {
+        $(this).removeClass('past present').addClass ('future');
+      }
+    });
+  }
 })
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
